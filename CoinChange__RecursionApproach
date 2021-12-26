@@ -1,0 +1,28 @@
+public static void main(String args[])
+    {
+        Fast sc=new Fast();
+        int v=sc.nextInt();
+        int m=sc.nextInt();
+        int coins[]= sc.readArray(m);
+        int res=minCoins(coins,m,v);
+        System.out.println(Integer.MAX_VALUE);
+        if(Math.abs(res)!=Math.abs(Integer.MAX_VALUE))
+        System.out.println(res);
+        else
+            System.out.println(-1);
+    }
+    static int minCoins(int coins[], int m, int v)
+    {
+        if (v ==0)
+            return 0;
+        int res=Integer.MAX_VALUE;
+        for(int i=0;i<m;i++)
+        {
+            if(coins[i]<=v)
+            {
+                int res1 = (1 + minCoins(coins, m, v - coins[i]));
+                res = Math.min(res, res1);
+            }
+        }
+        return res;
+    }
