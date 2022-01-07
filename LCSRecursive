@@ -1,0 +1,17 @@
+ static int lcs(String s1, String s2)
+    {
+        // your code here
+        return lcs1(0,0,s1,s2);
+    }
+    static int lcs1(int x,int y,String s1,String s2)
+    {
+        if(x==s1.length()||y==s2.length())
+            return 0;
+        char ch1=s1.charAt(x);
+        char ch2=s2.charAt(y);
+        if(ch1==ch2)
+            return 1+lcs1(x+1,y+1,s1,s2);
+        else
+            return Math.max(lcs1(x+1,y,s1,s2),lcs1(x,y+1,s1,s2));
+
+    }
