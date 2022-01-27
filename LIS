@@ -1,0 +1,34 @@
+TC-O(n*n)
+sc-O(n)
+
+class Solution 
+{
+    //Function to find length of longest increasing subsequence.
+    int max=1;
+     int find(int a[],int lis[])
+    {
+     
+       for(int i=1;i<a.length;i++)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(a[i]>a[j])
+                 {
+                 lis[i]=Math.max(lis[j]+1,lis[i]);
+                 max=Math.max(lis[i],max);
+                }
+            }
+        }
+        
+        return max;
+    
+    }
+     int longestSubsequence(int size, int a[])
+    {
+        // code here
+        int lis[]=new int[size];
+        Arrays.fill(lis,1);
+        return find(a,lis);
+        
+    }
+} 
