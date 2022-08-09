@@ -4,6 +4,24 @@ sc-O(n)
 class Solution 
 {
     //Function to find length of longest increasing subsequence.
+  
+  //MEMORIZATION
+   
+   static int rec1(int cur,int prev,int n,int a[],int dp[][])
+    {
+        if(cur>n)
+            return 0;
+        if(dp[cur][prev]!=-1)
+            return dp[cur][prev];
+        int npick=0+rec1(cur+1,prev,n,a,dp);int p=0;
+        if(prev==0||a[cur-1]>a[prev-1])
+        {
+             p=1+rec1(cur+1,cur,n,a,dp);
+        }
+        return dp[cur][prev]=Math.max(npick,p);
+  
+   }
+   
     int max=1;
      int find(int a[],int lis[])
     {
@@ -23,6 +41,7 @@ class Solution
         return max;
     
     }
+      
      int longestSubsequence(int size, int a[])
     {
         // code here
